@@ -19,7 +19,6 @@
             background-color: var(--bg-black); 
             color: var(--text-light); 
             line-height: 1.6;
-            text-align: left; /* Changed to left-to-right */
         }
 
         nav { 
@@ -58,16 +57,14 @@
         .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .contact-info { background: var(--card-gray); padding: 30px; border-radius: 8px; border: 1px solid #333; }
         .social-links { margin-top: 20px; display: flex; gap: 15px; }
-        .social-btn { padding: 10px 20px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+        .social-btn { padding: 10px 20px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; }
         .fb-btn { background: #1877F2; }
         .tt-btn { background: #000; border: 1px solid #fff; }
-
-        .map-container { border-radius: 8px; overflow: hidden; border: 2px solid var(--primary-red); height: 350px; }
 
         button { background: var(--primary-red); color: white; border: none; padding: 12px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 4px; }
         button:hover { background: var(--dark-red); }
         .btn-remove { background: #333; padding: 5px 10px; font-size: 0.7rem; border-radius: 4px; color: white; border: none; cursor: pointer; }
-        input, select { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 10px 0; width: 100%; border-radius: 4px; text-align: left;}
+        input, select { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 10px 0; width: 100%; border-radius: 4px; }
         
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; }
         .modal-content { background: #1a1a1a; border: 1px solid var(--primary-red); padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; overflow-y: auto; max-height: 90vh; }
@@ -76,9 +73,6 @@
         .confirm-box { background: #222; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #444; }
         .confirm-box span { color: var(--primary-red); font-weight: bold; }
 
-        .payment-options { margin-top: 15px; text-align: left; }
-        .v-cash-area { background: #000; padding: 15px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--primary-red); }
-        
         footer { background: #000; text-align: center; padding: 40px; border-top: 1px solid #222; color: #555; }
         .hidden { display: none; }
     </style>
@@ -89,33 +83,31 @@
         <div class="nav-links">
             <a href="#home" class="nav-link active" data-section="home">Home</a>
             <a href="#products" class="nav-link" data-section="products">Shop</a>
-            <a href="#contact" class="nav-link" data-section="contact">Contact Us</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             <a href="#registration" class="nav-link" data-section="registration" id="nav-acc-text">Account</a>
             <a href="#cart" id="view-cart-link" style="color: var(--primary-red);">Cart (0)</a>
         </div>
     </nav>
 
     <header id="home-header">
-        <h1 style="margin:0; font-size: 4rem; letter-spacing: 8px; text-transform: uppercase; text-shadow: 0 0 20px var(--primary-red);">Devil Store</h1>
-        <p style="font-size: 1.2rem; letter-spacing: 2px; color: #bbb;">Premium Accessories For Car Enthusiasts</p>
+        <h1 style="margin:0; font-size: 4rem; letter-spacing: 8px; text-transform: uppercase;">Devil Store</h1>
+        <p>Premium Accessories For Car Enthusiasts</p>
     </header>
 
-    <section id="home" class="active">
-        <div style="text-align: center;">
-            <h2>Engineered for Aggression</h2>
-            <p>Your premier destination for car customization in Sheikh Zayed. We accept Cash, Vodafone Cash, or Visa.</p>
-            <button onclick="document.querySelector('[data-section=\'products\']').click()">Browse Shop</button>
-        </div>
+    <section id="home" class="active" style="text-align: center;">
+        <h2>Engineered for Aggression</h2>
+        <p>Your destination for performance styling in Sheikh Zayed. Cash, Vodafone Cash, or Visa accepted.</p>
+        <button onclick="document.querySelector('[data-section=\'products\']').click()">Enter Shop</button>
     </section>
 
     <section id="products">
-        <h2>Latest Products</h2>
+        <h2>Inventory</h2>
         <div class="products">
             <div class="product">
                 <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400" alt="Seat Covers">
-                <h3>Premium Leather Covers</h3>
+                <h3>Leather Seat Covers</h3>
                 <p>1,500 EGP</p>
-                <button class="add-to-cart" data-name="Premium Leather Covers" data-price="1500">Add to Cart</button>
+                <button class="add-to-cart" data-name="Leather Seat Covers" data-price="1500">Add to Cart</button>
             </div>
             <div class="product sold-out">
                 <img src="https://images.unsplash.com/photo-1552650272-b8a34e21bc4b?w=400" alt="LED">
@@ -136,107 +128,89 @@
         <h2>Contact Us</h2>
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Get In Touch</h3>
                 <p><strong>Phone:</strong> 0103039098</p>
                 <p><strong>Location:</strong> Sheikh Zayed, Egypt</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-btn fb-btn">Facebook</a>
                     <a href="https://www.tiktok.com/@devil_store11" target="_blank" class="social-btn tt-btn">TikTok</a>
                 </div>
-                <button onclick="window.location.href='tel:0103039098'" style="width:100%; margin-top:20px;">Call Now</button>
-            </div>
-            <div class="map-container">
-                <iframe width="100%" height="100%" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13813.111817163821!2d30.98592965!3d30.0125055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458569263e1d683%3A0x7d67f53f938d2f62!2sSheikh%20Zayed%20City%2C%20Giza%20Governorate!5e0!3m2!1sen!2seg!4v1700000000000"></iframe>
             </div>
         </div>
     </section>
 
     <section id="registration">
-        <h2>Devil Store Account</h2>
-        <div class="auth-container">
-            <div id="auth-forms">
-                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <button id="show-login" style="flex: 1;">Login</button>
-                    <button id="show-register" style="flex: 1;">Register</button>
-                </div>
-                <div id="login-form">
-                    <input type="email" id="login-email" placeholder="Email Address">
-                    <input type="password" id="login-pass" placeholder="Password">
-                    <button id="login-submit" style="width:100%">Login</button>
-                </div>
-                <div id="register-form" class="hidden">
-                    <input type="text" id="reg-name" placeholder="Full Name">
-                    <input type="text" id="reg-phone" placeholder="Phone Number">
-                    <input type="email" id="reg-email" placeholder="Email Address">
-                    <input type="password" id="reg-pass" placeholder="Password">
-                    <select id="reg-gov">
-                        <option value="">Choose Governorate</option>
-                        <option value="Cairo">Cairo</option>
-                        <option value="Giza">Giza</option>
-                        <option value="Alexandria">Alexandria</option>
-                    </select>
-                    <input type="text" id="reg-loc" placeholder="Detailed Address (Street/Building)">
-                    <button id="register-submit" style="width:100%">Create Account</button>
-                </div>
+        <h2>Account</h2>
+        <div id="auth-forms">
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button id="show-login" style="flex: 1;">Login</button>
+                <button id="show-register" style="flex: 1;">Register</button>
             </div>
-            <div id="welcome" class="hidden" style="text-align: center;">
-                <h3 id="display-user-name"></h3>
-                <button id="logout-btn">Logout</button>
+            <div id="login-form">
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-pass" placeholder="Password">
+                <button id="login-submit" style="width:100%">Login</button>
             </div>
+            <div id="register-form" class="hidden">
+                <input type="text" id="reg-name" placeholder="Full Name">
+                <input type="text" id="reg-phone" placeholder="Phone Number">
+                <input type="email" id="reg-email" placeholder="Email Address">
+                <input type="password" id="reg-pass" placeholder="Password">
+                <select id="reg-gov">
+                    <option value="">Choose Governorate</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Alexandria">Alexandria</option>
+                </select>
+                <input type="text" id="reg-loc" placeholder="Street Address">
+                <button id="register-submit" style="width:100%">Create Account</button>
+            </div>
+        </div>
+        <div id="welcome" class="hidden" style="text-align: center;">
+            <h3 id="display-user-name"></h3>
+            <button id="logout-btn">Logout</button>
         </div>
     </section>
 
     <div id="cart-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 style="color: var(--primary-red);">Shopping Cart</h2>
+            <h2>Your Garage</h2>
             <div id="cart-items"></div>
-            <p style="text-align: right; font-weight: bold; font-size: 1.2rem; margin-top: 15px;">Total: <span id="cart-total">0.00</span> EGP</p>
-            <button id="checkout-btn" style="width:100%; margin-top: 10px;">Proceed to Checkout</button>
+            <p style="text-align: right;">Total: <span id="cart-total">0.00</span> EGP</p>
+            <button id="checkout-btn" style="width:100%">Proceed to Checkout</button>
             <button id="close-cart" style="width:100%; background:#333; margin-top:10px;">Close</button>
         </div>
     </div>
 
     <div id="confirm-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2 style="color: var(--primary-red);">Confirm Order & Payment</h2>
+            <h2>Order Confirmation</h2>
             <div class="confirm-box">
                 <p>Name: <span id="conf-name"></span></p>
-                <p>Address: <span id="conf-gov"></span>, <span id="conf-loc"></span></p>
-                <p>Total Amount: <span id="conf-total"></span> EGP</p>
+                <p>Total: <span id="conf-total"></span> EGP</p>
             </div>
-
-            <div class="payment-options">
-                <label>Payment Method:</label>
-                <select id="payment-method">
-                    <option value="cod">Cash on Delivery</option>
-                    <option value="vodafone">Vodafone Cash</option>
-                    <option value="credit">Credit Card (Visa)</option>
-                </select>
-
-                <div id="vodafone-area" class="v-cash-area hidden">
-                    <p style="font-size: 0.8rem; margin-bottom: 5px;">Transfer to: <span style="color: #25d366;">0103039098</span></p>
-                    <input type="text" id="v-sender-number" placeholder="Wallet number you transferred from">
-                    <label style="font-size: 0.7rem; display: block; margin-top: 5px;">Upload Screenshot:</label>
-                    <input type="file" id="v-screenshot" accept="image/*">
-                </div>
-
-                <div id="credit-area" class="v-cash-area hidden">
-                    <input type="text" placeholder="Card Number">
-                    <div style="display: flex; gap: 5px;">
-                        <input type="text" placeholder="MM/YY" style="flex: 1;">
-                        <input type="text" placeholder="CVV" style="flex: 1;">
-                    </div>
+            <select id="payment-method">
+                <option value="cod">Cash on Delivery</option>
+                <option value="vodafone">Vodafone Cash</option>
+                <option value="credit">Credit Card (Visa)</option>
+            </select>
+            <div id="vodafone-area" class="hidden" style="background:#000; padding:15px; margin-top:10px; border:1px solid var(--primary-red); border-radius:8px;">
+                <p style="font-size:0.8rem;">Transfer to: <strong>0103039098</strong></p>
+                <input type="text" id="v-sender" placeholder="Wallet Number Transferred From">
+                <input type="file" id="v-ss" accept="image/*">
+            </div>
+            <div id="credit-area" class="hidden" style="background:#000; padding:15px; margin-top:10px; border:1px solid var(--primary-red); border-radius:8px;">
+                <input type="text" placeholder="Card Number">
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" placeholder="MM/YY" style="flex: 1;">
+                    <input type="text" placeholder="CVV" style="flex: 1;">
                 </div>
             </div>
-
-            <button id="final-confirm-btn" style="width:100%; margin-top: 20px;">Place Order</button>
+            <button id="final-confirm-btn" style="width:100%; margin-top: 20px;">Confirm Final Order</button>
             <button id="cancel-confirm-btn" style="width:100%; background:#333; margin-top:10px;">Cancel</button>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 Devil Store Egypt. Unleash the Beast.</p>
-    </footer>
+    <footer><p>© 2026 Devil Store Egypt. Unleash the Beast.</p></footer>
 
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
@@ -245,36 +219,21 @@
         let cart = [];
 
         navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+            link.onclick = (e) => {
                 e.preventDefault();
-                const target = link.dataset.section;
                 sections.forEach(s => s.classList.remove('active'));
-                document.getElementById(target).classList.add('active');
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                document.getElementById('home-header').style.display = (target === 'home') ? 'block' : 'none';
-            });
+                document.getElementById(link.dataset.section).classList.add('active');
+                document.getElementById('home-header').style.display = (link.dataset.section === 'home') ? 'block' : 'none';
+            }
         });
 
-        document.getElementById('show-login').onclick = () => { 
-            document.getElementById('login-form').classList.remove('hidden'); 
-            document.getElementById('register-form').classList.add('hidden');
-        };
-        document.getElementById('show-register').onclick = () => { 
-            document.getElementById('register-form').classList.remove('hidden'); 
-            document.getElementById('login-form').classList.add('hidden');
-        };
-
+        // Account Logic
+        document.getElementById('show-login').onclick = () => { document.getElementById('login-form').classList.remove('hidden'); document.getElementById('register-form').classList.add('hidden'); };
+        document.getElementById('show-register').onclick = () => { document.getElementById('register-form').classList.remove('hidden'); document.getElementById('login-form').classList.add('hidden'); };
+        
         document.getElementById('register-submit').onclick = () => {
-            const user = { 
-                name: document.getElementById('reg-name').value, 
-                phone: document.getElementById('reg-phone').value,
-                email: document.getElementById('reg-email').value, 
-                pass: document.getElementById('reg-pass').value, 
-                gov: document.getElementById('reg-gov').value,
-                loc: document.getElementById('reg-loc').value
-            };
-            if(!user.name || !user.email) return alert("Please fill in all data!");
+            const user = { name: document.getElementById('reg-name').value, email: document.getElementById('reg-email').value, pass: document.getElementById('reg-pass').value, phone: document.getElementById('reg-phone').value, gov: document.getElementById('reg-gov').value, loc: document.getElementById('reg-loc').value };
+            if(!user.name || !user.email) return alert("Please fill data!");
             localStorage.setItem('devilUser', JSON.stringify(user));
             currentUser = user; updateUI();
         };
@@ -302,45 +261,35 @@
         }
         updateUI();
 
+        // Cart Logic
         document.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.onclick = () => {
                 const name = btn.dataset.name;
                 const price = parseFloat(btn.dataset.price);
                 const item = cart.find(i => i.name === name);
                 if(item) item.quantity++; else cart.push({name, price, quantity: 1});
-                updateCartBadge();
-                alert(`${name} added to cart!`);
+                document.getElementById('view-cart-link').innerText = `Cart (${cart.reduce((a,b)=>a+b.quantity,0)})`;
+                alert(`${name} added!`);
             };
         });
 
-        function updateCartBadge() {
-            document.getElementById('view-cart-link').innerText = `Cart (${cart.reduce((a,b)=>a+b.quantity,0)})`;
-        }
-
         function renderCart() {
-            const cartItemsDiv = document.getElementById('cart-items');
-            cartItemsDiv.innerHTML = cart.length === 0 ? '<p style="text-align:center;">Your cart is empty</p>' : '';
+            const list = document.getElementById('cart-items');
+            list.innerHTML = cart.length === 0 ? '<p style="text-align:center;">Empty</p>' : '';
             let total = 0;
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                cartItemsDiv.innerHTML += `<div class="cart-item"><span>${item.name} (x${item.quantity})</span><span>${(item.price * item.quantity).toLocaleString()} EGP</span><button class="btn-remove" onclick="removeItem(${index})">Remove</button></div>`;
+            cart.forEach((i, idx) => {
+                total += (i.price * i.quantity);
+                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${(i.price * i.quantity).toLocaleString()} EGP</span><button class="btn-remove" onclick="removeItem(${idx})">X</button></div>`;
             });
             document.getElementById('cart-total').innerText = total.toLocaleString();
         }
 
-        window.removeItem = (index) => { cart.splice(index, 1); updateCartBadge(); renderCart(); };
+        window.removeItem = (idx) => { cart.splice(idx, 1); renderCart(); document.getElementById('view-cart-link').innerText = `Cart (${cart.length})`; };
 
         document.getElementById('checkout-btn').onclick = () => {
-            if (cart.length === 0) return alert("Cart is empty!");
-            if(!currentUser) { 
-                alert("Please create an account first!"); 
-                document.querySelector('[data-section="registration"]').click();
-                document.getElementById('cart-modal').style.display = 'none';
-                return;
-            }
+            if(cart.length === 0) return alert("Empty Cart!");
+            if(!currentUser) return alert("You should make an account first!");
             document.getElementById('conf-name').innerText = currentUser.name;
-            document.getElementById('conf-gov').innerText = currentUser.gov;
-            document.getElementById('conf-loc').innerText = currentUser.loc;
             document.getElementById('conf-total').innerText = document.getElementById('cart-total').innerText;
             document.getElementById('cart-modal').style.display = 'none';
             document.getElementById('confirm-modal').style.display = 'flex';
@@ -353,19 +302,14 @@
 
         document.getElementById('final-confirm-btn').onclick = () => {
             const method = document.getElementById('payment-method').value;
-            if(method === 'vodafone') {
-                const sender = document.getElementById('v-sender-number').value;
-                const screenshot = document.getElementById('v-screenshot').files[0];
-                if(!sender || !screenshot) return alert("Please provide wallet number and transfer screenshot!");
-            }
-            alert("Order placed successfully! Thank you.");
-            cart = []; updateCartBadge();
-            document.getElementById('confirm-modal').style.display = 'none';
+            if(method === 'vodafone' && (!document.getElementById('v-sender').value || !document.getElementById('v-ss').files[0])) return alert("Upload proof!");
+            alert("Order Success!");
+            cart = []; location.reload();
         };
 
-        document.getElementById('cancel-confirm-btn').onclick = () => document.getElementById('confirm-modal').style.display = 'none';
-        document.getElementById('view-cart-link').onclick = (e) => { e.preventDefault(); renderCart(); document.getElementById('cart-modal').style.display = 'flex'; };
+        document.getElementById('view-cart-link').onclick = () => { renderCart(); document.getElementById('cart-modal').style.display = 'flex'; };
         document.getElementById('close-cart').onclick = () => document.getElementById('cart-modal').style.display = 'none';
+        document.getElementById('cancel-confirm-btn').onclick = () => document.getElementById('confirm-modal').style.display = 'none';
     </script>
 </body>
 </html>
