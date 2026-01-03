@@ -11,6 +11,7 @@
             --bg-black: #0f0f0f;
             --card-gray: #1a1a1a;
             --text-light: #e0e0e0;
+            --whatsapp-green: #25D366;
         }
 
         body { 
@@ -42,29 +43,50 @@
 
         h2 { border-left: 5px solid var(--primary-red); padding-left: 15px; text-transform: uppercase; margin-bottom: 30px; }
 
-        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .product { background: var(--card-gray); border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: center; position: relative; }
+        /* Modified WhatsApp: Fixed to bottom right, no glow light */
+        .wa-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--whatsapp-green);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 3000;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .wa-fixed:hover { transform: scale(1.1); background: #128C7E; }
+        .wa-fixed svg { fill: white; width: 30px; height: 30px; }
+
+        /* Products Grid Settings */
+        .products { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+        }
+        .product { background: var(--card-gray); border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: center; padding-bottom: 20px; position: relative; }
         .product:hover { transform: translateY(-10px); border-color: var(--primary-red); box-shadow: 0 10px 20px rgba(204, 0, 0, 0.2); }
         .product img { width: 100%; height: 200px; object-fit: cover; }
 
-        .product.sold-out { opacity: 0.6; pointer-events: none; }
-        .product.sold-out::after {
-            content: "SOLD OUT"; position: absolute; top: 20px; right: -10px;
-            background: var(--primary-red); color: white; padding: 5px 15px; font-weight: bold; transform: rotate(15deg);
-            border: 1px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        }
+        .social-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .social-rect { padding: 12px 25px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .fb-color { background: #1877F2; }
+        .tt-color { background: #000; border: 1px solid #fff; }
+        .ig-color { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
 
-        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .contact-info { background: var(--card-gray); padding: 30px; border-radius: 8px; border: 1px solid #333; }
-        .social-links { margin-top: 20px; display: flex; gap: 15px; }
-        .social-btn { padding: 10px 20px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; }
-        .fb-btn { background: #1877F2; }
-        .tt-btn { background: #000; border: 1px solid #fff; }
-
-        button { background: var(--primary-red); color: white; border: none; padding: 12px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 4px; }
+        button { background: var(--primary-red); color: white; border: none; padding: 12px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 4px; transition: 0.3s; }
         button:hover { background: var(--dark-red); }
-        .btn-remove { background: #333; padding: 5px 10px; font-size: 0.7rem; border-radius: 4px; color: white; border: none; cursor: pointer; }
-        input, select { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 10px 0; width: 100%; border-radius: 4px; }
+
+        .qty-controls { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
+        .qty-btn { background: #444; padding: 5px 12px; border-radius: 4px; color: white; cursor: pointer; border: none; font-weight: bold; }
+
+        input, select, textarea { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 10px 0; width: 100%; border-radius: 4px; box-sizing: border-box; font-family: inherit;}
+        textarea { height: 80px; resize: none; }
         
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; }
         .modal-content { background: #1a1a1a; border: 1px solid var(--primary-red); padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; overflow-y: auto; max-height: 90vh; }
@@ -78,6 +100,10 @@
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/201030309098" target="_blank" class="wa-fixed">
+        <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.4 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.4-16.5-14.7-27.6-32.8-30.8-38.5-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.8 2.8-3.3 3.7-5.6 5.5-9.3 1.9-3.7.9-6.9-.5-9.8-1.4-2.8-12.4-29.8-17-40.7-4.5-10.7-9-9.2-12.4-9.4h-10.6c-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 10.6 3.4 20.2 2.9 27.8 1.7 8.4-1.2 25.8-10.5 29.4-20.7 3.7-10.2 3.7-19 2.6-20.8-1.1-1.9-4.2-2.8-9.7-5.7z"/></svg>
+    </a>
 
     <nav>
         <div class="nav-links">
@@ -96,44 +122,59 @@
 
     <section id="home" class="active" style="text-align: center;">
         <h2>Engineered for Aggression</h2>
-        <p>Your destination for performance styling in Sheikh Zayed. Cash, Vodafone Cash, or Visa accepted.</p>
+        <p>Sheikh Zayed Performance Tuning. Cash & Wallet Accepted.</p>
         <button onclick="document.querySelector('[data-section=\'products\']').click()">Enter Shop</button>
     </section>
 
     <section id="products">
         <h2>Inventory</h2>
         <div class="products">
-            <div class="product">
-                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=400" alt="Seat Covers">
-                <h3>Leather Seat Covers</h3>
-                <p>1,500 EGP</p>
-                <button class="add-to-cart" data-name="Leather Seat Covers" data-price="1500">Add to Cart</button>
-            </div>
-            <div class="product sold-out">
-                <img src="https://images.unsplash.com/photo-1552650272-b8a34e21bc4b?w=400" alt="LED">
-                <h3>Vortex LED Kit</h3>
-                <p>2,400 EGP</p>
-                <button class="add-to-cart">Sold Out</button>
-            </div>
-            <div class="product">
-                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400" alt="BMW Lights">
-                <h3>BMW GTS Tail Lights</h3>
-                <p>6,000 EGP</p>
-                <button class="add-to-cart" data-name="BMW GTS Tail Lights" data-price="6000">Add to Cart</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <p><strong>Phone:</strong> 0103039098</p>
-                <p><strong>Location:</strong> Sheikh Zayed, Egypt</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-btn fb-btn">Facebook</a>
-                    <a href="https://www.tiktok.com/@devil_store11" target="_blank" class="social-btn tt-btn">TikTok</a>
+            <div class="product" id="prod-1">
+                <img src="https://images.unsplash.com/photo-1542362567-b055002b91f4?w=400" alt="طاره عربية bmw">
+                <h3>طاره عربية bmw</h3>
+                <p>3,500 EGP</p>
+                <div class="qty-controls hidden" id="controls-1">
+                    <button class="qty-btn" onclick="updateMainQty(1, -1)">-</button>
+                    <span id="main-qty-1">0</span>
+                    <button class="qty-btn" onclick="updateMainQty(1, 1)">+</button>
                 </div>
+                <button class="add-to-cart" id="btn-1" onclick="initAddToCart(1, 'طاره عربية bmw', 3500)">Add to Cart</button>
+            </div>
+
+            <div class="product" id="prod-2">
+                <img src="https://images.unsplash.com/photo-1598558943343-2678855e967d?w=400" alt="فرش جلد">
+                <h3>فرش جلد</h3>
+                <p>2,000 EGP</p>
+                <div class="qty-controls hidden" id="controls-2">
+                    <button class="qty-btn" onclick="updateMainQty(2, -1)">-</button>
+                    <span id="main-qty-2">0</span>
+                    <button class="qty-btn" onclick="updateMainQty(2, 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-2" onclick="initAddToCart(2, 'فرش جلد', 2000)">Add to Cart</button>
+            </div>
+
+            <div class="product" id="prod-3">
+                <img src="https://images.unsplash.com/photo-1552650272-b8a34e21bc4b?w=400" alt="فانوس ad led">
+                <h3>فانوس ad led</h3>
+                <p>1,200 EGP</p>
+                <div class="qty-controls hidden" id="controls-3">
+                    <button class="qty-btn" onclick="updateMainQty(3, -1)">-</button>
+                    <span id="main-qty-3">0</span>
+                    <button class="qty-btn" onclick="updateMainQty(3, 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-3" onclick="initAddToCart(3, 'فانوس ad led', 1200)">Add to Cart</button>
+            </div>
+
+            <div class="product" id="prod-4">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400" alt="كساحة">
+                <h3>كساحة</h3>
+                <p>800 EGP</p>
+                <div class="qty-controls hidden" id="controls-4">
+                    <button class="qty-btn" onclick="updateMainQty(4, -1)">-</button>
+                    <span id="main-qty-4">0</span>
+                    <button class="qty-btn" onclick="updateMainQty(4, 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-4" onclick="initAddToCart(4, 'كساحة', 800)">Add to Cart</button>
             </div>
         </div>
     </section>
@@ -141,33 +182,44 @@
     <section id="registration">
         <h2>Account</h2>
         <div id="auth-forms">
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <button id="show-login" style="flex: 1;">Login</button>
-                <button id="show-register" style="flex: 1;">Register</button>
-            </div>
             <div id="login-form">
                 <input type="email" id="login-email" placeholder="Email">
                 <input type="password" id="login-pass" placeholder="Password">
-                <button id="login-submit" style="width:100%">Login</button>
+                <div style="display: flex; gap: 10px;">
+                    <button id="login-submit" style="flex: 1;">Login</button>
+                    <button type="button" class="social-rect" style="background: #333; flex: 1; border: none; cursor: pointer;" onclick="showSection('home')">Save for another time</button>
+                </div>
+                <p style="text-align:center; cursor:pointer" onclick="document.getElementById('login-form').classList.add('hidden'); document.getElementById('register-form').classList.remove('hidden')">New? Register here</p>
             </div>
             <div id="register-form" class="hidden">
                 <input type="text" id="reg-name" placeholder="Full Name">
                 <input type="text" id="reg-phone" placeholder="Phone Number">
                 <input type="email" id="reg-email" placeholder="Email Address">
                 <input type="password" id="reg-pass" placeholder="Password">
-                <select id="reg-gov">
-                    <option value="">Choose Governorate</option>
-                    <option value="Cairo">Cairo</option>
-                    <option value="Giza">Giza</option>
-                    <option value="Alexandria">Alexandria</option>
-                </select>
                 <input type="text" id="reg-loc" placeholder="Street Address">
-                <button id="register-submit" style="width:100%">Create Account</button>
+                <div style="display: flex; gap: 10px;">
+                    <button id="register-submit" style="flex: 1;">Create Account</button>
+                    <button type="button" class="social-rect" style="background: #333; flex: 1; border: none; cursor: pointer;" onclick="showSection('home')">Save for another time</button>
+                </div>
             </div>
         </div>
         <div id="welcome" class="hidden" style="text-align: center;">
             <h3 id="display-user-name"></h3>
             <button id="logout-btn">Logout</button>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info" style="text-align: center;">
+            <p><strong>Phone:</strong> 01030309098</p>
+            <p><strong>Email:</strong> devil.store911@gmail.com</p>
+            <h3>Follow Our Platforms</h3>
+            <div class="social-container">
+                <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-rect fb-color">Facebook</a>
+                <a href="https://www.tiktok.com/@devil_store11" target="_blank" class="social-rect tt-color">TikTok</a>
+                <a href="https://www.instagram.com/devil.store911/" target="_blank" class="social-rect ig-color">Instagram</a>
+            </div>
         </div>
     </section>
 
@@ -184,65 +236,122 @@
     <div id="confirm-modal" class="modal-overlay">
         <div class="modal-content">
             <h2>Order Confirmation</h2>
-            <div class="confirm-box">
-                <p>Name: <span id="conf-name"></span></p>
-                <p>Total: <span id="conf-total"></span> EGP</p>
-            </div>
-            <select id="payment-method">
-                <option value="cod">Cash on Delivery</option>
-                <option value="vodafone">Vodafone Cash</option>
-                <option value="credit">Credit Card (Visa)</option>
-            </select>
-            <div id="vodafone-area" class="hidden" style="background:#000; padding:15px; margin-top:10px; border:1px solid var(--primary-red); border-radius:8px;">
-                <p style="font-size:0.8rem;">Transfer to: <strong>0103039098</strong></p>
-                <input type="text" id="v-sender" placeholder="Wallet Number Transferred From">
-                <input type="file" id="v-ss" accept="image/*">
-            </div>
-            <div id="credit-area" class="hidden" style="background:#000; padding:15px; margin-top:10px; border:1px solid var(--primary-red); border-radius:8px;">
-                <input type="text" placeholder="Card Number">
-                <div style="display: flex; gap: 5px;">
-                    <input type="text" placeholder="MM/YY" style="flex: 1;">
-                    <input type="text" placeholder="CVV" style="flex: 1;">
+            <form id="order-form" action="https://formspree.io/f/maqnjkyl" method="POST">
+                <div class="confirm-box">
+                    <p>Name: <span id="conf-name-display"></span></p>
+                    <p>Total: <span id="conf-total-display"></span> EGP</p>
+                    <input type="hidden" name="Customer Name" id="hidden-name">
+                    <input type="hidden" name="Phone" id="hidden-phone">
+                    <input type="hidden" name="Total Price" id="hidden-total">
+                    <input type="hidden" name="Cart Items" id="hidden-cart">
+                    <input type="hidden" name="_next" id="next-page">
                 </div>
-            </div>
-            <button id="final-confirm-btn" style="width:100%; margin-top: 20px;">Confirm Final Order</button>
+
+                <label>Car Color:</label>
+                <select id="car-color" name="Car Color" onchange="document.getElementById('other-color-input').classList.toggle('hidden', this.value !== 'Other')" required>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="other-color-input" name="Custom Color" class="hidden" placeholder="Enter car color">
+                
+                <label>Any Comments?</label>
+                <textarea name="Comments" placeholder="Write your notes here..."></textarea>
+
+                <label>Payment Method:</label>
+                <select id="payment-method" name="Payment Method" onchange="document.getElementById('wallet-info').classList.toggle('hidden', this.value !== 'wallet')" required>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="wallet">Wallet Transfer</option>
+                </select>
+
+                <div id="wallet-info" class="hidden" style="background:#222; padding:10px; border-radius:5px; margin-top:5px">
+                    <p style="margin:0; font-size:0.8rem">Transfer to: <strong>01030309098</strong></p>
+                    <p style="margin:0; font-size:0.7rem; color:#888">(Vodafone, Orange, Etisalat)</p>
+                    <input type="text" name="Sender Number" placeholder="Your Wallet Number">
+                </div>
+                
+                <button type="submit" style="width:100%; margin-top: 20px;">Confirm Final Order</button>
+            </form>
             <button id="cancel-confirm-btn" style="width:100%; background:#333; margin-top:10px;">Cancel</button>
         </div>
     </div>
 
-    <footer><p>© 2026 Devil Store Egypt. Unleash the Beast.</p></footer>
+    <footer><p>© 2026 Devil Store Egypt.</p></footer>
 
     <script>
-        const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section');
         let currentUser = JSON.parse(localStorage.getItem('devilUser')) || null;
         let cart = [];
 
-        navLinks.forEach(link => {
-            link.onclick = (e) => {
-                e.preventDefault();
-                sections.forEach(s => s.classList.remove('active'));
-                document.getElementById(link.dataset.section).classList.add('active');
-                document.getElementById('home-header').style.display = (link.dataset.section === 'home') ? 'block' : 'none';
+        document.getElementById('next-page').value = window.location.href.split('#')[0] + '#thank-you';
+
+        function initAddToCart(id, name, price) {
+            document.getElementById(`btn-${id}`).classList.add('hidden');
+            document.getElementById(`controls-${id}`).classList.remove('hidden');
+            document.getElementById(`main-qty-${id}`).innerText = "1";
+            addToCartLogic(name, price);
+        }
+
+        function updateMainQty(id, amount) {
+            const qtyDisplay = document.getElementById(`main-qty-${id}`);
+            let currentQty = parseInt(qtyDisplay.innerText) + amount;
+            
+            const prodData = {
+                1: { name: 'طاره عربية bmw', price: 3500 },
+                2: { name: 'فرش جلد', price: 2000 },
+                3: { name: 'فانوس ad led', price: 1200 },
+                4: { name: 'كساحة', price: 800 }
+            };
+
+            const name = prodData[id].name;
+
+            if(currentQty <= 0) {
+                document.getElementById(`controls-${id}`).classList.add('hidden');
+                document.getElementById(`btn-${id}`).classList.remove('hidden');
+                const idx = cart.findIndex(i => i.name === name);
+                if(idx > -1) cart.splice(idx, 1);
+            } else {
+                qtyDisplay.innerText = currentQty;
+                const item = cart.find(i => i.name === name);
+                if(item) {
+                    item.quantity = currentQty;
+                } else {
+                    cart.push({name, price: prodData[id].price, quantity: currentQty});
+                }
             }
+            updateCartBadge();
+        }
+
+        function addToCartLogic(name, price) {
+            const item = cart.find(i => i.name === name);
+            if(item) item.quantity++; else cart.push({name, price, quantity: 1});
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            document.getElementById('view-cart-link').innerText = `Cart (${cart.reduce((a,b)=>a+b.quantity,0)})`;
+        }
+
+        function showSection(id) {
+            sections.forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.getElementById('home-header').style.display = (id === 'home') ? 'block' : 'none';
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.onclick = (e) => { e.preventDefault(); showSection(link.dataset.section); }
         });
 
-        // Account Logic
-        document.getElementById('show-login').onclick = () => { document.getElementById('login-form').classList.remove('hidden'); document.getElementById('register-form').classList.add('hidden'); };
-        document.getElementById('show-register').onclick = () => { document.getElementById('register-form').classList.remove('hidden'); document.getElementById('login-form').classList.add('hidden'); };
-        
         document.getElementById('register-submit').onclick = () => {
-            const user = { name: document.getElementById('reg-name').value, email: document.getElementById('reg-email').value, pass: document.getElementById('reg-pass').value, phone: document.getElementById('reg-phone').value, gov: document.getElementById('reg-gov').value, loc: document.getElementById('reg-loc').value };
-            if(!user.name || !user.email) return alert("Please fill data!");
+            const user = { name: document.getElementById('reg-name').value, email: document.getElementById('reg-email').value, pass: document.getElementById('reg-pass').value, phone: document.getElementById('reg-phone').value, loc: document.getElementById('reg-loc').value };
             localStorage.setItem('devilUser', JSON.stringify(user));
             currentUser = user; updateUI();
         };
 
         document.getElementById('login-submit').onclick = () => {
             const saved = JSON.parse(localStorage.getItem('devilUser'));
-            if(saved && saved.email === document.getElementById('login-email').value && saved.pass === document.getElementById('login-pass').value) {
-                currentUser = saved; updateUI();
-            } else alert("Invalid credentials!");
+            if(saved && saved.email === document.getElementById('login-email').value) { currentUser = saved; updateUI(); }
         };
 
         document.getElementById('logout-btn').onclick = () => { currentUser = null; updateUI(); };
@@ -251,7 +360,7 @@
             if(currentUser) {
                 document.getElementById('auth-forms').classList.add('hidden');
                 document.getElementById('welcome').classList.remove('hidden');
-                document.getElementById('display-user-name').innerText = "Logged in as: " + currentUser.name;
+                document.getElementById('display-user-name').innerText = "Hello, " + currentUser.name;
                 document.getElementById('nav-acc-text').innerText = "Account (" + currentUser.name + ")";
             } else {
                 document.getElementById('auth-forms').classList.remove('hidden');
@@ -261,53 +370,33 @@
         }
         updateUI();
 
-        // Cart Logic
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.onclick = () => {
-                const name = btn.dataset.name;
-                const price = parseFloat(btn.dataset.price);
-                const item = cart.find(i => i.name === name);
-                if(item) item.quantity++; else cart.push({name, price, quantity: 1});
-                document.getElementById('view-cart-link').innerText = `Cart (${cart.reduce((a,b)=>a+b.quantity,0)})`;
-                alert(`${name} added!`);
-            };
-        });
-
-        function renderCart() {
-            const list = document.getElementById('cart-items');
-            list.innerHTML = cart.length === 0 ? '<p style="text-align:center;">Empty</p>' : '';
-            let total = 0;
-            cart.forEach((i, idx) => {
-                total += (i.price * i.quantity);
-                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${(i.price * i.quantity).toLocaleString()} EGP</span><button class="btn-remove" onclick="removeItem(${idx})">X</button></div>`;
-            });
-            document.getElementById('cart-total').innerText = total.toLocaleString();
-        }
-
-        window.removeItem = (idx) => { cart.splice(idx, 1); renderCart(); document.getElementById('view-cart-link').innerText = `Cart (${cart.length})`; };
-
         document.getElementById('checkout-btn').onclick = () => {
-            if(cart.length === 0) return alert("Empty Cart!");
-            if(!currentUser) return alert("You should make an account first!");
-            document.getElementById('conf-name').innerText = currentUser.name;
-            document.getElementById('conf-total').innerText = document.getElementById('cart-total').innerText;
+            if (cart.length === 0) {
+                return alert("Your cart is empty! Please add products before checking out.");
+            }
+            if(!currentUser) return alert("Please Login First");
+            document.getElementById('conf-name-display').innerText = currentUser.name;
+            document.getElementById('conf-total-display').innerText = document.getElementById('cart-total').innerText;
+            document.getElementById('hidden-name').value = currentUser.name;
+            document.getElementById('hidden-phone').value = currentUser.phone;
+            document.getElementById('hidden-total').value = document.getElementById('cart-total').innerText + " EGP";
+            document.getElementById('hidden-cart').value = cart.map(i => `${i.name} (x${i.quantity})`).join(", ");
             document.getElementById('cart-modal').style.display = 'none';
             document.getElementById('confirm-modal').style.display = 'flex';
         };
 
-        document.getElementById('payment-method').onchange = (e) => {
-            document.getElementById('vodafone-area').classList.toggle('hidden', e.target.value !== 'vodafone');
-            document.getElementById('credit-area').classList.toggle('hidden', e.target.value !== 'credit');
+        document.getElementById('view-cart-link').onclick = () => {
+            const list = document.getElementById('cart-items');
+            list.innerHTML = "";
+            let total = 0;
+            cart.forEach(i => {
+                total += (i.price * i.quantity);
+                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${(i.price * i.quantity).toLocaleString()} EGP</span></div>`;
+            });
+            document.getElementById('cart-total').innerText = total.toLocaleString();
+            document.getElementById('cart-modal').style.display = 'flex';
         };
 
-        document.getElementById('final-confirm-btn').onclick = () => {
-            const method = document.getElementById('payment-method').value;
-            if(method === 'vodafone' && (!document.getElementById('v-sender').value || !document.getElementById('v-ss').files[0])) return alert("Upload proof!");
-            alert("Order Success!");
-            cart = []; location.reload();
-        };
-
-        document.getElementById('view-cart-link').onclick = () => { renderCart(); document.getElementById('cart-modal').style.display = 'flex'; };
         document.getElementById('close-cart').onclick = () => document.getElementById('cart-modal').style.display = 'none';
         document.getElementById('cancel-confirm-btn').onclick = () => document.getElementById('confirm-modal').style.display = 'none';
     </script>
