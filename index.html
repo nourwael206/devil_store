@@ -14,27 +14,15 @@
             --whatsapp-green: #25D366;
         }
 
-        body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; padding: 0; 
-            background-color: var(--bg-black); 
-            color: var(--text-light); 
-            line-height: 1.6;
-        }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: var(--bg-black); color: var(--text-light); line-height: 1.6; }
 
-        nav { 
-            background-color: #000; padding: 20px; display: flex;
-            justify-content: center; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 2px solid var(--primary-red);
-        }
-
+        nav { background-color: #000; padding: 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary-red); }
         .nav-links a { color: #bbb; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary-red); text-shadow: 0 0 8px var(--primary-red); }
 
         header { 
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('cover.jpg'); 
-            background-size: cover; background-position: center; padding: 100px 20px; text-align: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920'); 
+            background-size: cover; background-position: center; padding: 120px 20px; text-align: center; 
         }
 
         section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; display: none; animation: fadeIn 0.5s ease-in; }
@@ -43,30 +31,11 @@
 
         h2 { border-left: 5px solid var(--primary-red); padding-left: 15px; text-transform: uppercase; margin-bottom: 30px; }
 
-        .wa-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--whatsapp-green);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 3000;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .wa-fixed:hover { transform: scale(1.1); background: #128C7E; }
+        .wa-fixed { position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp-green); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 3000; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .wa-fixed svg { fill: white; width: 30px; height: 30px; }
 
-        .products { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-        }
+        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .product.car-hidden { display: none; }
         .product { background: var(--card-gray); border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: center; padding-bottom: 20px; position: relative; }
         .product:hover { transform: translateY(-10px); border-color: var(--primary-red); box-shadow: 0 10px 20px rgba(204, 0, 0, 0.2); }
 
@@ -75,11 +44,10 @@
         .slider-container img.active { display: block; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 5px; cursor: pointer; font-weight: bold; z-index: 5; font-size: 18px; }
         .slider-btn:hover { background: var(--primary-red); }
-        .prev-btn { left: 0; border-radius: 0 5px 5px 0; }
-        .next-btn { right: 0; border-radius: 5px 0 0 5px; }
 
         .social-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-        .social-rect { padding: 12px 25px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .social-rect { display: flex; align-items: center; gap: 10px; padding: 12px 25px; border-radius: 4px; text-decoration: none; color: white; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .social-rect svg { width: 20px; height: 20px; fill: white; }
         .fb-color { background: #1877F2; }
         .tt-color { background: #000; border: 1px solid #fff; }
         .ig-color { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
@@ -91,7 +59,6 @@
         .qty-btn { background: #444; padding: 5px 12px; border-radius: 4px; color: white; cursor: pointer; border: none; font-weight: bold; }
 
         input, select, textarea { background: #222; border: 1px solid #444; color: white; padding: 12px; margin: 10px 0; width: 100%; border-radius: 4px; box-sizing: border-box; font-family: inherit;}
-        textarea { height: 80px; resize: none; }
         
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; }
         .modal-content { background: #1a1a1a; border: 1px solid var(--primary-red); padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; overflow-y: auto; max-height: 90vh; }
@@ -102,6 +69,7 @@
 
         footer { background: #000; text-align: center; padding: 40px; border-top: 1px solid #222; color: #555; }
         .hidden { display: none; }
+        .wallet-details { background: #222; padding: 10px; border: 1px solid #444; margin-top: 10px; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -113,7 +81,7 @@
     <nav>
         <div class="nav-links">
             <a href="#home" class="nav-link active" data-section="home">Home</a>
-            <a href="#products" class="nav-link" data-section="products">Shop</a>
+            <a href="#products" class="nav-link" data-section="products" onclick="filterProducts('all')">Shop</a>
             <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             <a href="#registration" class="nav-link" data-section="registration" id="nav-acc-text">Account</a>
             <a href="#cart" id="view-cart-link" style="color: var(--primary-red);">Cart (0)</a>
@@ -127,79 +95,147 @@
 
     <section id="home" class="active" style="text-align: center;">
         <h2>Engineered for Aggression</h2>
-        <p>Sheikh Zayed Performance Tuning. Cash & Wallet Accepted.</p>
-        <button onclick="document.querySelector('[data-section=\'products\']').click()">Enter Shop</button>
+        <p>Select Your Car To View Compatible Parts:</p>
+        <div style="max-width: 400px; margin: 0 auto;">
+            <select id="car-selector" onchange="filterProducts(this.value)">
+                <option value="all">All Cars (كل السيارات)</option>
+                <option value="bmw">BMW</option>
+                <option value="toyota">Toyota</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="mitsubishi">Mitsubishi</option>
+                <option value="hyundai">Hyundai</option>
+                <option value="mg">MG</option>
+                <option value="golf">Golf</option>
+                <option value="seat">Seat</option>
+                <option value="general">General (Universal)</option>
+            </select>
+            <button onclick="document.getElementById('car-selector').dispatchEvent(new Event('change'))">Enter Shop</button>
+        </div>
     </section>
 
     <section id="products">
-        <h2>Inventory</h2>
+        <h2 id="product-title">Inventory</h2>
         <div class="products">
-            <div class="product" id="prod-1">
+            
+            <div class="product" data-car="hyundai" id="prod-1">
                 <div class="slider-container" id="slider-1">
-                    <button class="slider-btn prev-btn" onclick="moveSlide(1, -1)">&#10094;</button>
-                    <img src="1.jpg.jpeg" class="active">
-                    <img src="1_alt.jpg">
-                    <button class="slider-btn next-btn" onclick="moveSlide(1, 1)">&#10095;</button>
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(1, -1)">&#10094;</button>
+                    <img src="1.jpg.jpeg" class="active"> 
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(1, 1)">&#10095;</button>
                 </div>
-                <h3>فانوس هونداي اي دي سموك</h3>
-                <p>15,000 EGP</p>
-                <div class="qty-controls hidden" id="controls-1">
-                    <button class="qty-btn" onclick="updateMainQty(1, -1)">-</button>
-                    <span id="main-qty-1">0</span>
-                    <button class="qty-btn" onclick="updateMainQty(1, 1)">+</button>
-                </div>
-                <button class="add-to-cart" id="btn-1" onclick="initAddToCart(1, 'فانوس هونداي اي دي سموك', 15000)">Add to Cart</button>
+                <h3>Tail lights hyundai AD SMOKE</h3>
+                <p>13,000 EGP</p>
+                <div class="qty-controls hidden" id="controls-1"><button class="qty-btn" onclick="updateMainQty(1, -1)">-</button><span id="main-qty-1">0</span><button class="qty-btn" onclick="updateMainQty(1, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-1" onclick="initAddToCart(1, 'Tail lights hyundai AD SMOKE', 13000)">Add to Cart</button>
             </div>
 
-            <div class="product" id="prod-2">
+            <div class="product" data-car="mitsubishi" id="prod-2">
                 <div class="slider-container" id="slider-2">
-                    <button class="slider-btn prev-btn" onclick="moveSlide(2, -1)">&#10094;</button>
-                    <img src="2.jpg" class="active">
-                    <img src="2_alt.jpg">
-                    <button class="slider-btn next-btn" onclick="moveSlide(2, 1)">&#10095;</button>
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(2, -1)">&#10094;</button>
+                    <img src="2.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(2, 1)">&#10095;</button>
                 </div>
-                <h3>فرش جلد</h3>
-                <p>2,000 EGP</p>
-                <div class="qty-controls hidden" id="controls-2">
-                    <button class="qty-btn" onclick="updateMainQty(2, -1)">-</button>
-                    <span id="main-qty-2">0</span>
-                    <button class="qty-btn" onclick="updateMainQty(2, 1)">+</button>
-                </div>
-                <button class="add-to-cart" id="btn-2" onclick="initAddToCart(2, 'فرش جلد', 2000)">Add to Cart</button>
+                <h3>Lancer Shark LED RGB Tail Lights</h3>
+                <p>13,000 EGP</p>
+                <div class="qty-controls hidden" id="controls-2"><button class="qty-btn" onclick="updateMainQty(2, -1)">-</button><span id="main-qty-2">0</span><button class="qty-btn" onclick="updateMainQty(2, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-2" onclick="initAddToCart(2, 'Lancer Shark LED RGB Tail Lights', 13000)">Add to Cart</button>
             </div>
 
-            <div class="product" id="prod-3">
+            <div class="product" data-car="bmw" id="prod-3">
                 <div class="slider-container" id="slider-3">
-                    <button class="slider-btn prev-btn" onclick="moveSlide(3, -1)">&#10094;</button>
-                    <img src="3.jpg" class="active">
-                    <img src="3_alt.jpg">
-                    <button class="slider-btn next-btn" onclick="moveSlide(3, 1)">&#10095;</button>
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(3, -1)">&#10094;</button>
+                    <img src="5.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(3, 1)">&#10095;</button>
                 </div>
-                <h3>فانوس ad led</h3>
-                <p>1,200 EGP</p>
-                <div class="qty-controls hidden" id="controls-3">
-                    <button class="qty-btn" onclick="updateMainQty(3, -1)">-</button>
-                    <span id="main-qty-3">0</span>
-                    <button class="qty-btn" onclick="updateMainQty(3, 1)">+</button>
-                </div>
-                <button class="add-to-cart" id="btn-3" onclick="initAddToCart(3, 'فانوس ad led', 1200)">Add to Cart</button>
+                <h3>Steering wheel bmw carbon fiber f30-x1-x5-x6-x4</h3>
+                <p>14,000 EGP</p>
+                <div class="qty-controls hidden" id="controls-3"><button class="qty-btn" onclick="updateMainQty(3, -1)">-</button><span id="main-qty-3">0</span><button class="qty-btn" onclick="updateMainQty(3, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-3" onclick="initAddToCart(3, 'Steering wheel bmw carbon fiber', 14000)">Add to Cart</button>
             </div>
 
-            <div class="product" id="prod-4">
+            <div class="product" data-car="bmw" id="prod-4">
                 <div class="slider-container" id="slider-4">
-                    <button class="slider-btn prev-btn" onclick="moveSlide(4, -1)">&#10094;</button>
-                    <img src="4.jpg" class="active">
-                    <img src="4_alt.jpg">
-                    <button class="slider-btn next-btn" onclick="moveSlide(4, 1)">&#10095;</button>
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(4, -1)">&#10094;</button>
+                    <img src="6.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(4, 1)">&#10095;</button>
                 </div>
-                <h3>كساحة</h3>
-                <p>800 EGP</p>
-                <div class="qty-controls hidden" id="controls-4">
-                    <button class="qty-btn" onclick="updateMainQty(4, -1)">-</button>
-                    <span id="main-qty-4">0</span>
-                    <button class="qty-btn" onclick="updateMainQty(4, 1)">+</button>
+                <h3>Steering wheel bmw carbon fiber LED</h3>
+                <p>22,500 EGP</p>
+                <div class="qty-controls hidden" id="controls-4"><button class="qty-btn" onclick="updateMainQty(4, -1)">-</button><span id="main-qty-4">0</span><button class="qty-btn" onclick="updateMainQty(4, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-4" onclick="initAddToCart(4, 'Steering wheel bmw LED', 2250)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="golf" id="prod-5">
+                <div class="slider-container" id="slider-5">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(5, -1)">&#10094;</button>
+                    <img src="7.jpeg" class="active">
+                    <img src="77.jpeg">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(5, 1)">&#10095;</button>
                 </div>
-                <button class="add-to-cart" id="btn-4" onclick="initAddToCart(4, 'كساحة', 800)">Add to Cart</button>
+                <h3>Kit golf 7 R line</h3>
+                <p>16,500 EGP</p>
+                <div class="qty-controls hidden" id="controls-5"><button class="qty-btn" onclick="updateMainQty(5, -1)">-</button><span id="main-qty-5">0</span><button class="qty-btn" onclick="updateMainQty(5, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-5" onclick="initAddToCart(5, 'Kit golf 7 R line', 16500)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-6">
+                <div class="slider-container" id="slider-6">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(6, -1)">&#10094;</button>
+                    <img src="8.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(6, 1)">&#10095;</button>
+                </div>
+                <h3>Forged carbon fiber exhaust tip akrapovic</h3>
+                <p>1,350 EGP</p>
+                <div class="qty-controls hidden" id="controls-6"><button class="qty-btn" onclick="updateMainQty(6, -1)">-</button><span id="main-qty-6">0</span><button class="qty-btn" onclick="updateMainQty(6, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-6" onclick="initAddToCart(6, 'Forged carbon tip', 1350)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-7">
+                <div class="slider-container" id="slider-7">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(7, -1)">&#10094;</button>
+                    <img src="9.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(7, 1)">&#10095;</button>
+                </div>
+                <h3>Carbon fiber akrapovic exhaust tip</h3>
+                <p>1,350 EGP</p>
+                <div class="qty-controls hidden" id="controls-7"><button class="qty-btn" onclick="updateMainQty(7, -1)">-</button><span id="main-qty-7">0</span><button class="qty-btn" onclick="updateMainQty(7, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-7" onclick="initAddToCart(7, 'Carbon akrapovic tip', 1350)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-8">
+                <div class="slider-container" id="slider-8">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(8, -1)">&#10094;</button>
+                    <img src="3.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(8, 1)">&#10095;</button>
+                </div>
+                <h3>brembo brakes cover metal</h3>
+                <p>700 EGP</p>
+                <div class="qty-controls hidden" id="controls-8"><button class="qty-btn" onclick="updateMainQty(8, -1)">-</button><span id="main-qty-8">0</span><button class="qty-btn" onclick="updateMainQty(8, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-8" onclick="initAddToCart(8, 'brembo brakes cover', 700)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="bmw" id="prod-9">
+                <div class="slider-container" id="slider-9">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(9, -1)">&#10094;</button>
+                    <img src="10.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(9, 1)">&#10095;</button>
+                </div>
+                <h3>Bmw key cover metal</h3>
+                <p>450 EGP</p>
+                <div class="qty-controls hidden" id="controls-9"><button class="qty-btn" onclick="updateMainQty(9, -1)">-</button><span id="main-qty-9">0</span><button class="qty-btn" onclick="updateMainQty(9, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-9" onclick="initAddToCart(9, 'Bmw key cover', 450)">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="bmw" id="prod-10">
+                <div class="slider-container" id="slider-10">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(10, -1)">&#10094;</button>
+                    <img src="11.jpeg" class="active">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(10, 1)">&#10095;</button>
+                </div>
+                <h3>paddle shifter steering wheel bmw</h3>
+                <p>700 EGP</p>
+                <div class="qty-controls hidden" id="controls-10"><button class="qty-btn" onclick="updateMainQty(10, -1)">-</button><span id="main-qty-10">0</span><button class="qty-btn" onclick="updateMainQty(10, 1)">+</button></div>
+                <button class="add-to-cart" id="btn-10" onclick="initAddToCart(10, 'paddle shifter bmw', 700)">Add to Cart</button>
             </div>
         </div>
     </section>
@@ -208,117 +244,92 @@
         <h2>Account</h2>
         <div id="auth-forms">
             <div id="login-form">
-                <input type="email" id="login-email" placeholder="Email">
+                <input type="email" id="login-email" placeholder="Email Address">
                 <input type="password" id="login-pass" placeholder="Password">
                 <div style="display: flex; gap: 10px;">
                     <button id="login-submit" style="flex: 1;">Login</button>
-                    <button type="button" class="social-rect" style="background: #333; flex: 1; border: none; cursor: pointer;" onclick="showSection('home')">Save for another time</button>
+                    <button type="button" class="social-rect" style="background: #333; flex: 1;" onclick="showSection('home')">Save for later</button>
                 </div>
-                <p style="text-align:center; cursor:pointer" onclick="document.getElementById('login-form').classList.add('hidden'); document.getElementById('register-form').classList.remove('hidden')">New? Register here</p>
+                <p style="text-align:center; cursor:pointer" onclick="document.getElementById('login-form').classList.add('hidden'); document.getElementById('register-form').classList.remove('hidden')">New user? Register here</p>
             </div>
             <div id="register-form" class="hidden">
                 <input type="text" id="reg-name" placeholder="Full Name">
                 <input type="text" id="reg-phone" placeholder="Phone Number">
                 <input type="email" id="reg-email" placeholder="Email Address">
-                <input type="password" id="reg-pass" placeholder="Password">
-                <select id="reg-loc-gov">
+                <input type="password" id="reg-pass" placeholder="Create Password">
+                <select id="reg-gov" required>
                     <option value="" disabled selected>Select Your Governorate</option>
-                    <option value="Cairo">Cairo (القاهرة)</option>
-                    <option value="Giza">Giza (الجيزة)</option>
-                    <option value="Alexandria">Alexandria (الإسكندرية)</option>
-                    <option value="Dakahlia">Dakahlia (الدقهلية)</option>
-                    <option value="Red Sea">Red Sea (البحر الأحمر)</option>
-                    <option value="Beheira">Beheira (البحيرة)</option>
-                    <option value="Fayoum">Fayoum (الفيوم)</option>
-                    <option value="Gharbia">Gharbia (الغربية)</option>
-                    <option value="Ismailia">Ismailia (الإسماعيلية)</option>
-                    <option value="Monufia">Monufia (المنوفية)</option>
-                    <option value="Minya">Minya (المنيا)</option>
-                    <option value="Qalyubia">Qalyubia (القليوبية)</option>
-                    <option value="New Valley">New Valley (الوادي الجديد)</option>
-                    <option value="Suez">Suez (السويس)</option>
-                    <option value="Sharqia">Sharqia (الشرقية)</option>
-                    <option value="Aswan">Aswan (أسوان)</option>
-                    <option value="Assiut">Assiut (أسيوط)</option>
-                    <option value="Beni Suef">Beni Suef (بني سويف)</option>
-                    <option value="Port Said">Port Said (بورسعيد)</option>
-                    <option value="Damietta">Damietta (دمياط)</option>
-                    <option value="South Sinai">South Sinai (جنوب سيناء)</option>
-                    <option value="Kafr El Sheikh">Kafr El Sheikh (كفر الشيخ)</option>
-                    <option value="Matrouh">Matrouh (مطروح)</option>
-                    <option value="Luxor">Luxor (الأقصر)</option>
-                    <option value="Qena">Qena (قنا)</option>
-                    <option value="North Sinai">North Sinai (شمال سيناء)</option>
-                    <option value="Sohag">Sohag (سوهاج)</option>
+                    <option value="Cairo">Cairo</option><option value="Alexandria">Alexandria</option><option value="Giza">Giza</option>
+                    <option value="Port Said">Port Said</option><option value="Suez">Suez</option><option value="Luxor">Luxor</option>
                 </select>
-                <input type="text" id="reg-loc-addr" placeholder="Street Address / City">
-                <div style="display: flex; gap: 10px;">
-                    <button id="register-submit" style="flex: 1;">Create Account</button>
-                    <button type="button" class="social-rect" style="background: #333; flex: 1; border: none; cursor: pointer;" onclick="showSection('home')">Save for another time</button>
-                </div>
+                <input type="text" id="reg-loc-addr" placeholder="Detailed Address">
+                <button id="register-submit" style="width: 100%;">Create Account</button>
+                <p style="text-align:center; cursor:pointer" onclick="document.getElementById('register-form').classList.add('hidden'); document.getElementById('login-form').classList.remove('hidden')">Back to Login</p>
             </div>
         </div>
         <div id="welcome" class="hidden" style="text-align: center;">
             <h3 id="display-user-name"></h3>
+            <p id="display-user-gov" style="color: #888;"></p>
             <button id="logout-btn">Logout</button>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact Us</h2>
-        <div class="contact-info" style="text-align: center;">
-            <p><strong>Phone:</strong> 01030309098</p>
-            <p><strong>Email:</strong> devil.store911@gmail.com</p>
-            <h3>Follow Our Platforms</h3>
-            <div class="social-container">
-                <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-rect fb-color">Facebook</a>
-                <a href="https://www.tiktok.com/@devil_store11" target="_blank" class="social-rect tt-color">TikTok</a>
-                <a href="https://www.instagram.com/devil.store911/" target="_blank" class="social-rect ig-color">Instagram</a>
-            </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="font-size: 1.2rem;">📞 <strong>Phone:</strong> 01030309098</p>
+            <p style="font-size: 1.2rem;">📧 <strong>Email:</strong> devil.store911@gmail.com</p>
+        </div>
+        <div class="social-container">
+            <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-rect fb-color"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</a>
+            <a href="https://www.tiktok.com/@devil.store5" target="_blank" class="social-rect tt-color"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.77-.21.98.05 2.03.73 2.79.62.7 1.51 1.1 2.42 1.1 1.25-.01 2.38-.83 2.77-2.01.14-.33.18-.68.18-1.03l.01-13.23z"/></svg>TikTok</a>
+            <a href="https://www.instagram.com/devil.store911/" target="_blank" class="social-rect ig-color"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678-1.38.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.805-.249-2.227-.412-.56-.216-.96-.474-1.38-.894-.42-.42-.678-.82-.894-1.38-.163-.422-.358-1.057-.412-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.249-1.805.412-2.227.216-.56.474-.96.894-1.38.42-.42.82-.678 1.38-.894.422-.163 1.057-.358 2.227-.412 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.078 1.079 1.866 1.384c.765.297 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.079-1.078 1.384-1.866c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Instagram</a>
         </div>
     </section>
 
-    <div id="cart-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h2>Your Garage</h2>
-            <div id="cart-items"></div>
-            <p style="text-align: right;">Total: <span id="cart-total">0.00</span> EGP</p>
-            <button id="checkout-btn" style="width:100%">Proceed to Checkout</button>
-            <button id="close-cart" style="width:100%; background:#333; margin-top:10px;">Close</button>
-        </div>
-    </div>
-
+    <div id="cart-modal" class="modal-overlay"><div class="modal-content"><h2>Your Garage</h2><div id="cart-items"></div><p style="text-align: right;">Total: <span id="cart-total">0.00</span> EGP</p><button id="checkout-btn" style="width:100%">Proceed to Checkout</button><button id="close-cart" style="width:100%; background:#333; margin-top:10px;">Close</button></div></div>
+    
     <div id="confirm-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2>Order Confirmation</h2>
+            <h2>Complete Your Order</h2>
             <form id="order-form" action="https://formspree.io/f/maqnjkyl" method="POST">
                 <div class="confirm-box">
-                    <p>Name: <span id="conf-name-display"></span></p>
                     <p>Total: <span id="conf-total-display"></span> EGP</p>
                     <input type="hidden" name="Customer Name" id="hidden-name">
                     <input type="hidden" name="Phone" id="hidden-phone">
-                    <input type="hidden" name="Total Price" id="hidden-total">
+                    <input type="hidden" name="Location" id="hidden-gov">
                     <input type="hidden" name="Cart Items" id="hidden-cart">
+                    <input type="hidden" name="Total Price" id="hidden-total">
                 </div>
-                <label>Car Color:</label>
-                <select id="car-color" name="Car Color" required>
-                    <option value="Black">Black</option>
-                    <option value="White">White</option>
-                    <option value="Silver">Silver</option>
-                    <option value="Other">Other</option>
+                
+                <label>Car Color (لون السيارة):</label>
+                <select name="Car Color" id="car-color-select" onchange="document.getElementById('custom-color-field').classList.toggle('hidden', this.value !== 'Other')" required>
+                    <option value="Black">Black (أسود)</option>
+                    <option value="White">White (أبيض)</option>
+                    <option value="Silver">Silver (فضي)</option>
+                    <option value="Red">Red (أحمر)</option>
+                    <option value="Blue">Blue (أزرق)</option>
+                    <option value="Grey">Grey (رمادي)</option>
+                    <option value="Other">Other (آخر)</option>
                 </select>
-                <label>Comments:</label>
-                <textarea name="Comments" placeholder="Write notes here..."></textarea>
-                <label>Payment Method:</label>
-                <select id="payment-method" name="Payment Method" onchange="document.getElementById('wallet-info').classList.toggle('hidden', this.value !== 'wallet')" required>
-                    <option value="cod">Cash on Delivery</option>
-                    <option value="wallet">Wallet Transfer</option>
+                <input type="text" name="Custom Color" id="custom-color-field" class="hidden" placeholder="Type car color here...">
+                
+                <label>Payment Method (طريقة الدفع):</label>
+                <select name="Payment Method" id="pay-method" onchange="toggleWalletInfo(this.value)" required>
+                    <option value="Cash on Delivery">Cash on Delivery (كاش)</option>
+                    <option value="Mobile Wallet">Mobile Wallet (محفظة)</option>
                 </select>
-                <div id="wallet-info" class="hidden" style="background:#222; padding:10px; border-radius:5px; margin-top:5px">
-                    <p style="margin:0; font-size:0.8rem">Transfer to: <strong>01030309098</strong></p>
-                    <input type="text" name="Sender Number" placeholder="Your Wallet Number">
+
+                <div id="wallet-info" class="hidden wallet-details">
+                    <p style="margin:0; font-size:0.9rem">Transfer to: <strong>01030309098</strong></p>
+                    <p style="margin:0; font-size:0.8rem; color:#aaa">Accepts: Vodafone, Orange, Etisalat Cash </p>
+                    <input type="text" name="Sender Wallet Number" placeholder="Enter Your Wallet Number (رقم الراسل)">
                 </div>
-                <button type="submit" style="width:100%; margin-top: 20px;">Confirm Final Order</button>
+
+                <label>Any Comments?</label>
+                <textarea name="Comments" placeholder="Write your notes..."></textarea>
+
+                <button type="submit" style="width: 100%; margin-top: 15px;">place your Order</button>
             </form>
             <button id="cancel-confirm-btn" style="width:100%; background:#333; margin-top:10px;">Cancel</button>
         </div>
@@ -331,101 +342,29 @@
         let currentUser = JSON.parse(localStorage.getItem('devilUser')) || null;
         let cart = [];
 
-        function moveSlide(prodId, direction) {
-            const container = document.getElementById(`slider-${prodId}`);
-            const images = container.querySelectorAll('img');
-            let activeIdx = 0;
-            images.forEach((img, index) => {
-                if (img.classList.contains('active')) activeIdx = index;
-                img.classList.remove('active');
-            });
-            activeIdx = (activeIdx + direction + images.length) % images.length;
-            images[activeIdx].classList.add('active');
-        }
-
-        // --- تعديل دالة الإضافة لتأخذ البيانات من الزر مباشرة ---
-        function initAddToCart(id, name, price) {
-            document.getElementById(`btn-${id}`).classList.add('hidden');
-            document.getElementById(`controls-${id}`).classList.remove('hidden');
-            document.getElementById(`main-qty-${id}`).innerText = "1";
-            
-            // إضافة للسلة باستخدام البيانات الممرة
-            const item = cart.find(i => i.name === name);
-            if(!item) {
-                cart.push({name, price, quantity: 1});
-            }
-            updateCartBadge();
-        }
-
-        function updateMainQty(id, amount) {
-            const qtyDisplay = document.getElementById(`main-qty-${id}`);
-            let currentQty = parseInt(qtyDisplay.innerText) + amount;
-            
-            // الحصول على الاسم والسعر من الزر الخاص بهذا المنتج
-            const btn = document.getElementById(`btn-${id}`);
-            const onclickText = btn.getAttribute('onclick');
-            // استخراج الاسم والسعر من الـ onclick
-            const match = onclickText.match(/'([^']+)',\s*(\d+)/);
-            const name = match[1];
-            const price = parseInt(match[2]);
-
-            if(currentQty <= 0) {
-                document.getElementById(`controls-${id}`).classList.add('hidden');
-                btn.classList.remove('hidden');
-                cart = cart.filter(i => i.name !== name);
-            } else {
-                qtyDisplay.innerText = currentQty;
-                const item = cart.find(i => i.name === name);
-                if(item) {
-                    item.quantity = currentQty;
-                } else {
-                    cart.push({name, price, quantity: currentQty});
-                }
-            }
-            updateCartBadge();
-        }
-
-        function updateCartBadge() {
-            const totalQty = cart.reduce((a, b) => a + b.quantity, 0);
-            document.getElementById('view-cart-link').innerText = `Cart (${totalQty})`;
-        }
-
         function showSection(id) {
             sections.forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            const target = document.getElementById(id);
+            if(target) target.classList.add('active');
             document.getElementById('home-header').style.display = (id === 'home') ? 'block' : 'none';
+            window.scrollTo(0,0);
         }
 
         document.querySelectorAll('.nav-link').forEach(link => {
             link.onclick = (e) => { e.preventDefault(); showSection(link.dataset.section); }
         });
 
-        document.getElementById('register-submit').onclick = () => {
-            const gov = document.getElementById('reg-loc-gov').value;
-            const addr = document.getElementById('reg-loc-addr').value;
-            if(!gov) { alert("Please select your governorate"); return; }
-            const user = { name: document.getElementById('reg-name').value, email: document.getElementById('reg-email').value, pass: document.getElementById('reg-pass').value, phone: document.getElementById('reg-phone').value, loc: gov + " - " + addr };
-            localStorage.setItem('devilUser', JSON.stringify(user));
-            currentUser = user; updateUI();
-        };
-
-        document.getElementById('login-submit').onclick = () => {
-            const saved = JSON.parse(localStorage.getItem('devilUser'));
-            if(saved && saved.email === document.getElementById('login-email').value) { currentUser = saved; updateUI(); }
-        };
-
-        document.getElementById('logout-btn').onclick = () => {
-            currentUser = null;
-            updateUI();
-            showSection('home');
-        };
+        function toggleWalletInfo(val) {
+            document.getElementById('wallet-info').classList.toggle('hidden', val !== 'Mobile Wallet');
+        }
 
         function updateUI() {
             if(currentUser) {
                 document.getElementById('auth-forms').classList.add('hidden');
                 document.getElementById('welcome').classList.remove('hidden');
-                document.getElementById('display-user-name').innerText = "Hello, " + currentUser.name;
-                document.getElementById('nav-acc-text').innerText = "Account (" + currentUser.name + ")";
+                document.getElementById('display-user-name').innerText = "Welcome, " + currentUser.name;
+                document.getElementById('display-user-gov').innerText = currentUser.gov;
+                document.getElementById('nav-acc-text').innerText = currentUser.name;
             } else {
                 document.getElementById('auth-forms').classList.remove('hidden');
                 document.getElementById('welcome').classList.add('hidden');
@@ -434,32 +373,90 @@
         }
         updateUI();
 
-        document.getElementById('checkout-btn').onclick = () => {
-            if (cart.length === 0) return alert("Your cart is empty!");
-            if(!currentUser) return alert("Please Login First");
-            
-            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            document.getElementById('conf-name-display').innerText = currentUser.name;
-            document.getElementById('conf-total-display').innerText = totalPrice.toLocaleString();
-            document.getElementById('hidden-name').value = currentUser.name;
-            document.getElementById('hidden-phone').value = currentUser.phone;
-            document.getElementById('hidden-total').value = totalPrice.toLocaleString() + " EGP";
-            document.getElementById('hidden-cart').value = cart.map(i => `${i.name} (x${i.quantity})`).join(", ");
-            document.getElementById('cart-modal').style.display = 'none';
-            document.getElementById('confirm-modal').style.display = 'flex';
+        document.getElementById('register-submit').onclick = () => {
+            const name = document.getElementById('reg-name').value, phone = document.getElementById('reg-phone').value,
+                  email = document.getElementById('reg-email').value, pass = document.getElementById('reg-pass').value,
+                  gov = document.getElementById('reg-gov').value;
+            if(!name || !phone || !email || !pass || !gov) return alert("Please fill all fields");
+            currentUser = { name, phone, email, pass, gov };
+            localStorage.setItem('devilUser', JSON.stringify(currentUser));
+            updateUI(); showSection('home');
         };
 
-        document.getElementById('view-cart-link').onclick = () => {
+        document.getElementById('login-submit').onclick = () => {
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-pass').value;
+            const saved = JSON.parse(localStorage.getItem('devilUser'));
+            if(saved && saved.email === email && saved.pass === pass) {
+                currentUser = saved; updateUI(); showSection('home');
+            } else alert("Invalid Credentials");
+        };
+
+        document.getElementById('logout-btn').onclick = () => { currentUser = null; updateUI(); showSection('home'); };
+
+        function filterProducts(carType) {
+            document.querySelectorAll('.product').forEach(p => {
+                const c = p.getAttribute('data-car');
+                p.classList.toggle('car-hidden', !(carType === 'all' || c === carType || c === 'general'));
+            });
+            showSection('products');
+        }
+
+        function moveSlide(id, dir) {
+            const imgs = document.querySelectorAll(`#slider-${id} img`);
+            if(imgs.length < 2) return;
+            let idx = Array.from(imgs).findIndex(img => img.classList.contains('active'));
+            imgs[idx].classList.remove('active');
+            idx = (idx + dir + imgs.length) % imgs.length;
+            imgs[idx].classList.add('active');
+        }
+
+        function initAddToCart(id, name, price) {
+            document.getElementById(`btn-${id}`).classList.add('hidden');
+            document.getElementById(`controls-${id}`).classList.remove('hidden');
+            document.getElementById(`main-qty-${id}`).innerText = "1";
+            cart.push({id, name, price, quantity: 1});
+            updateCartBadge();
+        }
+
+        function updateMainQty(id, amt) {
+            let item = cart.find(i => i.id === id);
+            item.quantity += amt;
+            if(item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== id);
+                document.getElementById(`controls-${id}`).classList.add('hidden');
+                document.getElementById(`btn-${id}`).classList.remove('hidden');
+            } else document.getElementById(`main-qty-${id}`).innerText = item.quantity;
+            updateCartBadge();
+        }
+
+        function updateCartBadge() { document.getElementById('view-cart-link').innerText = `Cart (${cart.reduce((a,b)=>a+b.quantity,0)})`; }
+
+        document.getElementById('view-cart-link').onclick = (e) => {
+            e.preventDefault();
             const list = document.getElementById('cart-items');
-            list.innerHTML = "";
-            let total = 0;
+            list.innerHTML = ""; let total = 0;
             cart.forEach(i => {
-                const subtotal = i.price * i.quantity;
-                total += subtotal;
-                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${subtotal.toLocaleString()} EGP</span></div>`;
+                total += (i.price * i.quantity);
+                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${(i.price * i.quantity).toLocaleString()} EGP</span></div>`;
             });
             document.getElementById('cart-total').innerText = total.toLocaleString();
             document.getElementById('cart-modal').style.display = 'flex';
+        };
+
+        document.getElementById('checkout-btn').onclick = () => {
+            if(!currentUser) { alert("Please Login First"); return showSection('registration'); }
+            if(cart.length === 0) return alert("Cart is empty");
+            
+            document.getElementById('conf-total-display').innerText = document.getElementById('cart-total').innerText;
+            document.getElementById('hidden-name').value = currentUser.name;
+            document.getElementById('hidden-phone').value = currentUser.phone;
+            document.getElementById('hidden-gov').value = currentUser.gov;
+            document.getElementById('hidden-cart').value = cart.map(i => `${i.name} (x${i.quantity})`).join(", ");
+            document.getElementById('hidden-total').value = document.getElementById('cart-total').innerText + " EGP";
+            
+            document.getElementById('cart-modal').style.display = 'none';
+            document.getElementById('confirm-modal').style.display = 'flex';
         };
 
         document.getElementById('close-cart').onclick = () => document.getElementById('cart-modal').style.display = 'none';
@@ -467,5 +464,3 @@
     </script>
 </body>
 </html>
-
-
