@@ -17,9 +17,17 @@
 
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: var(--bg-black); color: var(--text-light); line-height: 1.6; }
 
-        nav { background-color: #000; padding: 20px; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary-red); }
+        nav { background-color: #000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary-red); }
+        .nav-links { display: flex; align-items: center; flex-grow: 1; justify-content: center; }
         .nav-links a { color: #bbb; margin: 0 15px; text-decoration: none; font-weight: bold; transition: 0.3s; text-transform: uppercase; font-size: 0.85rem; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary-red); text-shadow: 0 0 8px var(--primary-red); }
+
+        /* Search Bar Style */
+        .search-container { display: flex; align-items: center; position: relative; }
+        .search-container input { width: 0; padding: 0; border: none; transition: 0.4s; background: transparent; color: white; border-bottom: 1px solid var(--primary-red); outline: none; }
+        .search-container:hover input, .search-container input:focus { width: 150px; padding: 5px; margin-right: 10px; }
+        .search-icon { color: #bbb; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
+        .search-icon:hover { color: var(--primary-red); }
 
         header { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920'); 
@@ -32,11 +40,10 @@
 
         h2 { border-left: 5px solid var(--primary-red); padding-left: 15px; text-transform: uppercase; margin-bottom: 30px; }
 
-        /* Floating Cart Icon */
         .cart-floating {
             position: fixed;
-            bottom: 90px; /* تم رفعها لتكون فوق الواتساب */
-            right: 20px;  /* نقلها إلى جهة اليمين */
+            bottom: 90px;
+            right: 20px;
             background: var(--primary-red);
             width: 60px;
             height: 60px;
@@ -66,7 +73,6 @@
             justify-content: center;
         }
 
-        /* Lightbox for Images */
         .image-overlay {
             display: none;
             position: fixed;
@@ -90,7 +96,7 @@
         .slider-container { position: relative; width: 100%; height: 200px; background: #000; overflow: hidden; }
         .slider-container img { width: 100%; height: 100%; object-fit: cover; display: none; }
         .slider-container img.active { display: block; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 5px; cursor: pointer; font-weight: bold; z-index: 5; font-size: 18px; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 5px; cursor: pointer; z-index: 5; font-size: 18px; }
 
         button { background: var(--primary-red); color: white; border: none; padding: 12px 20px; cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 4px; transition: 0.3s; }
         button:hover { background: var(--dark-red); }
@@ -110,7 +116,6 @@
         .hidden { display: none; }
         .wallet-details { background: #222; padding: 10px; border: 1px solid #444; margin-top: 10px; border-radius: 5px; }
 
-        /* Social */
         .social-container { 
             display: flex; 
             justify-content: center; 
@@ -137,6 +142,14 @@
         .tt-color { background: #000; border: 1px solid #fff; }
         .ig-color { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
 
+        .remove-item { color: var(--primary-red); cursor: pointer; margin-left: 10px; font-size: 1.2rem; transition: 0.3s; }
+        .remove-item:hover { color: white; transform: scale(1.1); }
+
+        .cart-qty-btn { background: #333; color: white; border: 1px solid #555; padding: 2px 8px; cursor: pointer; border-radius: 3px; font-size: 0.8rem; }
+        .cart-qty-btn:hover { background: var(--primary-red); }
+
+        .map-container { margin-top: 20px; border: 2px solid var(--primary-red); border-radius: 10px; overflow: hidden; height: 250px; width: 100%; }
+
     </style>
 </head>
 <body>
@@ -147,7 +160,7 @@
     </a>
 
     <div class="image-overlay" id="img-overlay">
-        <span class="close-overlay" onclick="closeImage()">&times;</span>
+        <span class="close-overlay" onclick="closeImage()">×</span>
         <img id="expanded-img">
     </div>
 
@@ -156,11 +169,15 @@
     </a>
 
     <nav>
-        <div class="nav-links">
+        <div style="width: 40px;"></div> <div class="nav-links">
             <a href="#home" class="nav-link active" data-section="home">Home</a>
             <a href="#products" class="nav-link" data-section="products" onclick="filterProducts('all')">Shop</a>
             <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             <a href="#registration" class="nav-link" data-section="registration" id="nav-acc-text">Account</a>
+        </div>
+        <div class="search-container">
+            <input type="text" id="main-search" placeholder="Search products..." onkeyup="searchProducts()">
+            <i class="fas fa-search search-icon"></i>
         </div>
     </nav>
 
@@ -186,6 +203,33 @@
                 <option value="general">General (Universal)</option>
             </select>
             <button onclick="document.getElementById('car-selector').dispatchEvent(new Event('change'))">Enter Shop</button>
+        </div>
+
+        <h2 style="margin-top: 60px;">🔥 Best Sellers</h2>
+        <div class="products" style="margin-top: 30px;">
+            <div class="product">
+                <img src="14.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Bmw M3 badge</h3>
+                <p>200 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('home-q1', -1)">-</button>
+                    <span id="home-q1" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q1', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="initAddToCart(13, 'Bmw M3 badge', 200, 'home-q1')">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="6.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Steering wheel bmw carbon fiber LED</h3>
+                <p>22,500 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('home-q2', -1)">-</button>
+                    <span id="home-q2" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q2', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="initAddToCart(4, 'Steering wheel bmw LED', 22500, 'home-q2')">Add to Cart</button>
+            </div>
         </div>
     </section>
 
@@ -498,6 +542,85 @@
                 <button class="add-to-cart" id="btn-19" onclick="initAddToCart(19, 'Tail lights GTS bmw', 13600, 'q19')">Add to Cart</button>
             </div>
 
+            <div class="product" data-car="general" id="prod-20">
+                <div class="slider-container" id="slider-20">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(20, -1)">❮</button>
+                    <img src="21.jepg" class="active" onclick="openImage(this.src)">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(20, 1)">❯</button>
+                </div>
+                <h3>Front grille toyota corolla</h3>
+                <p>2600 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('q20', -1)">-</button>
+                    <span id="q20" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('q20', 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-20" onclick="initAddToCart(20, 'Front grille toyota corolla', 0, 'q20')">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-21">
+                <div class="slider-container" id="slider-21">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(21, -1)">❮</button>
+                    <img src="22.jepg" class="active" onclick="openImage(this.src)">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(21, 1)">❯</button>
+                </div>
+                <h3>Diffuser toyota corolla 3 parts</h3>
+                <p>1600 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('q21', -1)">-</button>
+                    <span id="q21" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('q21', 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-21" onclick="initAddToCart(21,'Diffuser toyota corolla 3 parts', 0, 'q21')">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-22">
+                <div class="slider-container" id="slider-22">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(22, -1)">❮</button>
+                    <img src="23.jepg" class="active" onclick="openImage(this.src)">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(22, 1)">❯</button>
+                </div>
+                <h3>Front lip toyota corolla</h3>
+                <p>1200 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('q22', -1)">-</button>
+                    <span id="q22" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('q22', 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-22" onclick="initAddToCart(22, 'Front lip toyota corolla', 0, 'q22')">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-23">
+                <div class="slider-container" id="slider-23">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(23, -1)">❮</button>
+                    <img src="24.jepg" class="active" onclick="openImage(this.src)">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(23, 1)">❯</button>
+                </div>
+                <h3>Mirror cover bat man </h3>
+                <p>550 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('q23', -1)">-</button>
+                    <span id="q23" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('q23', 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-23" onclick="initAddToCart(23, 'Mirror cover bat man', 0, 'q23')">Add to Cart</button>
+            </div>
+
+            <div class="product" data-car="general" id="prod-24">
+                <div class="slider-container" id="slider-24">
+                    <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(24, -1)">❮</button>
+                    <img src="25.jepg" class="active" onclick="openImage(this.src)">
+                    <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(24, 1)">❯</button>
+                </div>
+                <h3>Bundle Toyota corolla </h3>
+                <p>3300 EGP</p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('q24', -1)">-</button>
+                    <span id="q24" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('q24', 1)">+</button>
+                </div>
+                <button class="add-to-cart" id="btn-24" onclick="initAddToCart(24, ' Bundle Toyota corolla ', 0, 'q24')">Add to Cart</button>
+            </div>
         </div>
     </section>
 
@@ -561,29 +684,32 @@
     </section>
 
     <section id="contact">
-    <h2>Contact Us</h2>
-    <div style="text-align: center; margin-bottom: 30px;">
-        <p style="font-size: 1.2rem;">📞 <strong>Phone:</strong> 01030309098</p>
-        <p style="font-size: 1.2rem;">📧 <strong>Email:</strong> devil.store911@gmail.com</p>
-    </div>
-    
-    <div class="social-container">
-        <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-rect fb-color">
-            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Facebook
-        </a>
+        <h2>Contact Us</h2>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="font-size: 1.2rem;">📞 <strong>Phone:</strong> 01030309098</p>
+            <p style="font-size: 1.2rem;">📧 <strong>Email:</strong> devil.store911@gmail.com</p>
+            <p style="font-size: 1.2rem;">📍 <strong>Location:</strong> Al Moez Mall, Sheikh Zayed (مول المعز، الشيخ زايد)</p>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.174624177112!2d30.9840244743247!3d30.031853518510842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145856eb1a251a31%3A0xe54955767b43a98!2sEl%20Moez%20Plaza%20Mall!5e0!3m2!1sen!2seg!4v1709770000000!5m2!1sen!2seg" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
         
-        <a href="https://www.tiktok.com/@devil.store5" target="_blank" class="social-rect tt-color">
-            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.77-.21.98.05 2.03.73 2.79.62.7 1.51 1.1 2.42 1.1 1.25-.01 2.38-.83 2.77-2.01.14-.33.18-.68.18-1.03l.01-13.23z"/></svg>
-            TikTok
-        </a>
-        
-        <a href="https://www.instagram.com/devil.store911/" target="_blank" class="social-rect ig-color">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678 1.38-.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.078 1.079 1.866 1.384c.765.297 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.079-1.078 1.384-1.866c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            Instagram
-        </a>
-    </div>
-</section>
+        <div class="social-container">
+            <a href="https://www.facebook.com/share/1GrUHcmbBb/" target="_blank" class="social-rect fb-color">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+            </a>
+            <a href="https://www.tiktok.com/@devil.store5" target="_blank" class="social-rect tt-color">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.27 1.77-.21.98.05 2.03.73 2.79.62.7 1.51 1.1 2.42 1.1 1.25-.01 2.38-.83 2.77-2.01.14-.33.18-.68.18-1.03l.01-13.23z"/></svg>
+                TikTok
+            </a>
+            <a href="https://www.instagram.com/devil.store911/" target="_blank" class="social-rect ig-color">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.56.216.96.474 1.38.894.42.42.678.82.894 1.38.163.422.358 1.057.412 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.56-.474.96-.894 1.38-.42.42-.82.678 1.38-.894-.422.163-1.057.358-2.227.412-1.266.058-1.646.07-4.85.07zM12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.078 1.079 1.866 1.384c.765.297 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.079-1.078 1.384-1.866c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Instagram
+            </a>
+        </div>
+    </section>
 
     <div id="cart-modal" class="modal-overlay"><div class="modal-content"><h2>Your Garage</h2><div id="cart-items"></div><p style="text-align: right;">Total: <span id="cart-total">0.00</span> EGP</p><button id="checkout-btn" style="width:100%">Proceed to Checkout</button><button id="close-cart" style="width:100%; background:#333; margin-top:10px;">Close</button></div></div>
     
@@ -649,6 +775,15 @@
             if(target) target.classList.add('active');
             document.getElementById('home-header').style.display = (id === 'home') ? 'block' : 'none';
             window.scrollTo(0,0);
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('main-search').value.toLowerCase();
+            showSection('products');
+            document.querySelectorAll('#products .product').forEach(p => {
+                const title = p.querySelector('h3').innerText.toLowerCase();
+                p.style.display = title.includes(query) ? 'block' : 'none';
+            });
         }
 
         function changeQtyUI(id, amt) {
@@ -742,7 +877,7 @@
         }
 
         function filterProducts(carType) {
-            document.querySelectorAll('.product').forEach(p => {
+            document.querySelectorAll('#products .product').forEach(p => {
                 const c = p.getAttribute('data-car');
                 p.classList.toggle('car-hidden', !(carType === 'all' || c === carType || c === 'general'));
             });
@@ -771,6 +906,21 @@
             document.getElementById(qtyId).innerText = "1";
         }
 
+        function updateCartQty(index, amt) {
+            cart[index].quantity += amt;
+            if(cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartBadge();
+            renderCartModal();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartBadge();
+            renderCartModal();
+        }
+
         function updateCartBadge() { 
             const count = cart.reduce((a,b)=>a+b.quantity, 0);
             document.getElementById('cart-badge').innerText = count; 
@@ -779,9 +929,21 @@
         function renderCartModal() {
             const list = document.getElementById('cart-items');
             list.innerHTML = ""; let total = 0;
-            cart.forEach(i => {
+            cart.forEach((i, index) => {
                 total += (i.price * i.quantity);
-                list.innerHTML += `<div class="cart-item"><span>${i.name} (x${i.quantity})</span><span>${(i.price * i.quantity).toLocaleString()} EGP</span></div>`;
+                list.innerHTML += `
+                    <div class="cart-item">
+                        <div style="flex: 1;">
+                            <span>${i.name}</span><br>
+                            <small>${(i.price * i.quantity).toLocaleString()} EGP</small>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <button class="cart-qty-btn" onclick="updateCartQty(${index}, -1)">-</button>
+                            <span>${i.quantity}</span>
+                            <button class="cart-qty-btn" onclick="updateCartQty(${index}, 1)">+</button>
+                            <i class="fas fa-trash remove-item" onclick="removeFromCart(${index})"></i>
+                        </div>
+                    </div>`;
             });
             document.getElementById('cart-total').innerText = total.toLocaleString();
         }
@@ -831,10 +993,8 @@
                 location.reload();
             });
         };
-
         document.getElementById('close-cart').onclick = () => document.getElementById('cart-modal').style.display = 'none';
         document.getElementById('cancel-confirm-btn').onclick = () => document.getElementById('confirm-modal').style.display = 'none';
     </script>
 </body>
 </html>
-
