@@ -204,33 +204,57 @@
             </select>
             <button onclick="document.getElementById('car-selector').dispatchEvent(new Event('change'))">Enter Shop</button>
         </div>
-
-        <h2 style="margin-top: 60px;">🔥 Best Sellers</h2>
+<h2 style="margin-top: 60px;">🔥sales</h2>
         <div class="products" style="margin-top: 30px;">
             <div class="product">
-                <img src="14.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
-                <h3>Bmw M3 badge</h3>
-                <p>200 EGP</p>
+                <img src="28.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Spoiler CN7</h3>
+                <p><del style="color: #888; font-size: 0.9rem;">1,200 EGP</del> <span style="color: var(--primary-red);">1,000 EGP</span></p>
                 <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQtyUI('home-q1', -1)">-</button>
-                    <span id="home-q1" style="font-weight:bold; min-width:20px;">1</span>
-                    <button class="qty-btn" onclick="changeQtyUI('home-q1', 1)">+</button>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q3', -1)">-</button>
+                    <span id="home-q3" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q3', 1)">+</button>
                 </div>
-                <button class="add-to-cart" onclick="initAddToCart(13, 'Bmw M3 badge', 200, 'home-q1')">Add to Cart</button>
+                <button class="add-to-cart" onclick="initAddToCart(27, 'Spoiler CN7', 1000, 'home-q3')">Add to Cart</button>
             </div>
 
             <div class="product">
-                <img src="6.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
-                <h3>Steering wheel bmw carbon fiber LED</h3>
-                <p>22,500 EGP</p>
+                <img src="27.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Mirror cover CN7</h3>
+                <p><del style="color: #888; font-size: 0.9rem;">550 EGP</del> <span style="color: var(--primary-red);">500 EGP</span></p>
                 <div class="qty-controls">
-                    <button class="qty-btn" onclick="changeQtyUI('home-q2', -1)">-</button>
-                    <span id="home-q2" style="font-weight:bold; min-width:20px;">1</span>
-                    <button class="qty-btn" onclick="changeQtyUI('home-q2', 1)">+</button>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q4', -1)">-</button>
+                    <span id="home-q4" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q4', 1)">+</button>
                 </div>
-                <button class="add-to-cart" onclick="initAddToCart(4, 'Steering wheel bmw LED', 22500, 'home-q2')">Add to Cart</button>
+                <button class="add-to-cart" onclick="initAddToCart(26, 'Mirror cover CN7', 500, 'home-q4')">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="26.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Front grill CN7</h3>
+                <p><del style="color: #888; font-size: 0.9rem;">1,700 EGP</del> <span style="color: var(--primary-red);">1,500 EGP</span></p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('home-q5', -1)">-</button>
+                    <span id="home-q5" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q5', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="initAddToCart(25, 'Front grill CN7', 1500, 'home-q5')">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="30.jpeg" onclick="openImage(this.src)" style="height: 200px; width: 100%; object-fit: cover;">
+                <h3>Bmw f30</h3>
+                <p><del style="color: #888; font-size: 0.9rem;">5,500 EGP</del> <span style="color: var(--primary-red);">4,400 EGP</span></p>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQtyUI('home-q6', -1)">-</button>
+                    <span id="home-q6" style="font-weight:bold; min-width:20px;">1</span>
+                    <button class="qty-btn" onclick="changeQtyUI('home-q6', 1)">+</button>
+                </div>
+                <button class="add-to-cart" onclick="initAddToCart(29, 'BMW F30 Performance', 4400, 'home-q6')">Add to Cart</button>
             </div>
         </div>
+        
     </section>
 
     <section id="products">
@@ -542,7 +566,7 @@
                 <button class="add-to-cart" id="btn-19" onclick="initAddToCart(19, 'Tail lights GTS bmw', 13600, 'q19')">Add to Cart</button>
             </div>
 
-            <div class="product" data-car="general" id="prod-20">
+            <div class="product" data-car="toyota" id="prod-20">
                 <div class="slider-container" id="slider-20">
                     <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(20, -1)">❮</button>
                     <img src="21.jpeg" class="active" onclick="openImage(this.src)">
@@ -555,10 +579,10 @@
                     <span id="q20" style="font-weight:bold; min-width:20px;">1</span>
                     <button class="qty-btn" onclick="changeQtyUI('q20', 1)">+</button>
                 </div>
-                <button class="add-to-cart" id="btn-20" onclick="initAddToCart(20, 'Front grille toyota corolla', 0, 'q20')">Add to Cart</button>
+                <button class="add-to-cart" id="btn-20" onclick="initAddToCart(20, 'Front grille toyota corolla', 2600, 'q20')">Add to Cart</button>
             </div>
 
-            <div class="product" data-car="general" id="prod-21">
+            <div class="product" data-car="toyota" id="prod-21">
                 <div class="slider-container" id="slider-21">
                     <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(21, -1)">❮</button>
                     <img src="22.jpeg" class="active" onclick="openImage(this.src)">
@@ -571,10 +595,10 @@
                     <span id="q21" style="font-weight:bold; min-width:20px;">1</span>
                     <button class="qty-btn" onclick="changeQtyUI('q21', 1)">+</button>
                 </div>
-                <button class="add-to-cart" id="btn-21" onclick="initAddToCart(21,'Diffuser toyota corolla 3 parts', 0, 'q21')">Add to Cart</button>
+                <button class="add-to-cart" id="btn-21" onclick="initAddToCart(21,'Diffuser toyota corolla 3 parts', 1600, 'q21')">Add to Cart</button>
             </div>
 
-            <div class="product" data-car="general" id="prod-22">
+            <div class="product" data-car="toyota" id="prod-22">
                 <div class="slider-container" id="slider-22">
                     <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(22, -1)">❮</button>
                     <img src="23.jpeg" class="active" onclick="openImage(this.src)">
@@ -587,10 +611,10 @@
                     <span id="q22" style="font-weight:bold; min-width:20px;">1</span>
                     <button class="qty-btn" onclick="changeQtyUI('q22', 1)">+</button>
                 </div>
-                <button class="add-to-cart" id="btn-22" onclick="initAddToCart(22, 'Front lip toyota corolla', 0, 'q22')">Add to Cart</button>
+                <button class="add-to-cart" id="btn-22" onclick="initAddToCart(22, 'Front lip toyota corolla', 1200, 'q22')">Add to Cart</button>
             </div>
 
-            <div class="product" data-car="general" id="prod-23">
+            <div class="product" data-car="toyota" id="prod-23">
                 <div class="slider-container" id="slider-23">
                     <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(23, -1)">❮</button>
                     <img src="24.jpeg" class="active" onclick="openImage(this.src)">
@@ -603,10 +627,10 @@
                     <span id="q23" style="font-weight:bold; min-width:20px;">1</span>
                     <button class="qty-btn" onclick="changeQtyUI('q23', 1)">+</button>
                 </div>
-                <button class="add-to-cart" id="btn-23" onclick="initAddToCart(23, 'Mirror cover bat man', 0, 'q23')">Add to Cart</button>
+                <button class="add-to-cart" id="btn-23" onclick="initAddToCart(23, 'Mirror cover bat man', 550, 'q23')">Add to Cart</button>
             </div>
 
-            <div class="product" data-car="general" id="prod-24">
+            <div class="product" data-car="toyota" id="prod-24">
                 <div class="slider-container" id="slider-24">
                     <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(24, -1)">❮</button>
                     <img src="25.jpeg" class="active" onclick="openImage(this.src)">
@@ -619,9 +643,90 @@
                     <span id="q24" style="font-weight:bold; min-width:20px;">1</span>
                     <button class="qty-btn" onclick="changeQtyUI('q24', 1)">+</button>
                 </div>
-                <button class="add-to-cart" id="btn-24" onclick="initAddToCart(24, ' Bundle Toyota corolla ', 0, 'q24')">Add to Cart</button>
+                <button class="add-to-cart" id="btn-24" onclick="initAddToCart(24, ' Bundle Toyota corolla ', 3300, 'q24')">Add to Cart</button>
             </div>
         </div>
+        <div class="products">
+    <div class="product" data-car="hyundai" id="prod-25">
+        <div class="slider-container" id="slider-25">
+            <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(25, -1)">❮</button>
+            <img src="26.jpeg" class="active" onclick="openImage(this.src)" >
+            <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(25, 1)">❯</button>
+        </div>
+        <h3>Front grill CN7</h3>
+        <p>1500 EGP</p>
+        <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQtyUI('q25', -1)">-</button>
+            <span id="q25" style="font-weight:bold; min-width:20px;">1</span>
+            <button class="qty-btn" onclick="changeQtyUI('q25', 1)">+</button>
+        </div>
+        <button class="add-to-cart" onclick="initAddToCart(25, 'Front grill CN7', 2850, 'q25')">Add to Cart</button>
+    </div>
+
+    <div class="product" data-car="hyundai" id="prod-26">
+        <div class="slider-container" id="slider-26">
+            <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(26, -1)">❮</button>
+            <img src="27.jpeg" class="active" onclick="openImage(this.src)">
+            <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(26, 1)">❯</button>
+        </div>
+        <h3>Mirror cover CN7</h3>
+        <p>500 EGP</p>
+        <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQtyUI('q26', -1)">-</button>
+            <span id="q26" style="font-weight:bold; min-width:20px;">1</span>
+            <button class="qty-btn" onclick="changeQtyUI('q26', 1)">+</button>
+        </div>
+        <button class="add-to-cart" onclick="initAddToCart(26, 'Mirror cover CN7', 650, 'q26')">Add to Cart</button>
+    </div>
+
+    <div class="product" data-car="hyundai" id="prod-27">
+        <div class="slider-container" id="slider-27">
+            <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(27, -1)">❮</button>
+            <img src="28.jpeg" class="active" onclick="openImage(this.src)">
+            <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(27, 1)">❯</button>
+        </div>
+        <h3>Spoiler CN7</h3>
+        <p>1,000 EGP</p>
+        <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQtyUI('q27', -1)">-</button>
+            <span id="q27" style="font-weight:bold; min-width:20px;">1</span>
+            <button class="qty-btn" onclick="changeQtyUI('q27', 1)">+</button>
+        </div>
+        <button class="add-to-cart" onclick="initAddToCart(27, 'Spoiler CN7', 1200, 'q27')">Add to Cart</button>
+    </div>
+
+    <div class="product" data-car="hyundai" id="prod-28">
+        <div class="slider-container" id="slider-28">
+            <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(28, -1)">❮</button>
+            <img src="29.jpeg" class="active" onclick="openImage(this.src)" >
+            <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(28, 1)">❯</button>
+        </div>
+        <h3>Car sails CN7</h3>
+        <p>550 EGP</p>
+        <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQtyUI('q28', -1)">-</button>
+            <span id="q28" style="font-weight:bold; min-width:20px;">1</span>
+            <button class="qty-btn" onclick="changeQtyUI('q28', 1)">+</button>
+        </div>
+        <button class="add-to-cart" onclick="initAddToCart(28, 'Car sails CN7', 450, 'q28')">Add to Cart</button>
+    </div>
+
+    <div class="product" data-car="bmw" id="prod-29">
+        <div class="slider-container" id="slider-29">
+            <button class="slider-btn prev-btn" style="left:0" onclick="moveSlide(29, -1)">❮</button>
+            <img src="30.jpeg" class="active" onclick="openImage(this.src)">
+            <button class="slider-btn next-btn" style="right:0" onclick="moveSlide(29, 1)">❯</button>
+        </div>
+        <h3> streeing wheel BMW F30 </h3>
+        <p>4400 EGP</p>
+        <div class="qty-controls">
+            <button class="qty-btn" onclick="changeQtyUI('q29', -1)">-</button>
+            <span id="q29" style="font-weight:bold; min-width:20px;">1</span>
+            <button class="qty-btn" onclick="changeQtyUI('q29', 1)">+</button>
+        </div>
+        <button class="add-to-cart" onclick="initAddToCart(29, 'BMW F30 Performance', 3500, 'q29')">Add to Cart</button>
+    </div>
+</div>
     </section>
 
     <section id="registration">
@@ -879,6 +984,7 @@
         function filterProducts(carType) {
             document.querySelectorAll('#products .product').forEach(p => {
                 const c = p.getAttribute('data-car');
+                // التعديل هنا: general تظهر دائماً، أما toyota فتظهر فقط مع toyota
                 p.classList.toggle('car-hidden', !(carType === 'all' || c === carType || c === 'general'));
             });
             showSection('products');
@@ -998,4 +1104,3 @@
     </script>
 </body>
 </html>
-
